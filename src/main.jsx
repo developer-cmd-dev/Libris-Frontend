@@ -5,6 +5,9 @@ import App from './App.jsx'
 import SignUpPage from './Pages/SignUpPage'
 import LoginPage from './Pages/LoginPage'
 import{createBrowserRouter,RouterProvider} from "react-router-dom"
+import BooksDetailPage from './Pages/BooksDetailPage'
+import { Provider } from 'react-redux'
+import {store} from './App/store'
 
 
 const router = createBrowserRouter([
@@ -20,6 +23,10 @@ const router = createBrowserRouter([
   {
     path:'/login',
     element:<LoginPage/>
+  },
+  {
+    path:'/title/:title',
+    element:<BooksDetailPage/>
   }
 
 
@@ -27,7 +34,8 @@ const router = createBrowserRouter([
 
 
 createRoot(document.getElementById('root')).render(
-    <RouterProvider router={router}>
-      <App />
-    </RouterProvider>
+  <Provider store={store}>
+    <RouterProvider router={router}/>
+  </Provider>
+
 )

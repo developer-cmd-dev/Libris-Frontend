@@ -5,12 +5,9 @@ import App from './App.jsx'
 import SignUpPage from './Pages/SignUpPage'
 import LoginPage from './Pages/LoginPage'
 import{createBrowserRouter,RouterProvider} from "react-router-dom"
-import HomePage from './Pages/HomePage'
-import { ThemeProvider } from './components/ThemProvider'
 
 
 const router = createBrowserRouter([
-
 
   {
     path:'/',
@@ -32,9 +29,7 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={router}>
-      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <App />
-      </ThemeProvider>
     </RouterProvider>
   </StrictMode>,
 )

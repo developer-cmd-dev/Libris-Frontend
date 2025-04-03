@@ -151,9 +151,9 @@ export function AppSidebar({
   ...props
 }) {
   return (
-    (<Sidebar {...props}>
+    (<Sidebar  {...props}>
       <SidebarHeader>
-        <VersionSwitcher versions={data.versions} defaultVersion={data.versions[0]} />
+        <VersionSwitcher  versions={data.versions} defaultVersion={data.versions[0]} />
         <SearchForm />
       </SidebarHeader>
       <SidebarContent>

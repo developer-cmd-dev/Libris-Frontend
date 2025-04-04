@@ -1,22 +1,28 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { CiShoppingCart } from "react-icons/ci";
 import { MdCurrencyRupee } from "react-icons/md";
+import { useParams } from "react-router";
 
 
 
 function BooksDetailPage() {
-  const data = useSelector((state) => state.booksData);
+  const {title} = useParams()
+  const [data, setData] = useState(null);
 
   useEffect(() => {
-    console.log(data);
-  }, [data]);
+   const data = JSON.parse(localStorage.getItem("booksData"));
+   const filteredData = data.filter((item) => item.title === title);
+   console.log(filteredData)
+    setData(filteredData[0]);
+  }, [title]);
 
-  return (
+
+  
+
+  return data!==null &&(
 <div className="w-full h-[calc(100vh-5.5rem)] flex flex-col md:flex-row items-center justify-center overflow-hidden">
       <div className="w-full md:w-[50%] h-[40%] md:h-full flex items-center justify-center p-4">
         <img 

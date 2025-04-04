@@ -2,7 +2,15 @@ import React from 'react'
 
 function BooksDetailPage() {
   return (
-    <div>BooksDetailPage</div>
+    <div>
+
+
+      
+
+
+
+      
+    </div>
   )
 }
 

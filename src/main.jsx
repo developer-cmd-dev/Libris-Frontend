@@ -8,13 +8,25 @@ import{createBrowserRouter,RouterProvider} from "react-router-dom"
 import BooksDetailPage from './Pages/BooksDetailPage'
 import { Provider } from 'react-redux'
 import {store} from './App/store'
+import HomePage from './Pages/HomePage'
 
 
 const router = createBrowserRouter([
 
   {
     path:'/',
-    element:<App/>
+    element:<App/>,
+    children:[
+      {
+        path:'/',
+        element:<HomePage/>
+      },
+      {
+        path:'/title/:title',
+        element:<BooksDetailPage/>
+      },
+    ]
+
   },
   {
     path:'/signup',
@@ -25,8 +37,7 @@ const router = createBrowserRouter([
     element:<LoginPage/>
   },
   {
-    path:'/title/:title',
-    element:<BooksDetailPage/>
+   
   }
 
 

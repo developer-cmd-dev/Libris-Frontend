@@ -9,6 +9,7 @@ import BooksDetailPage from './Pages/BooksDetailPage'
 import { Provider } from 'react-redux'
 import {store} from './App/store'
 import HomePage from './Pages/HomePage'
+import { Toaster } from 'sonner'
 
 
 const router = createBrowserRouter([
@@ -46,6 +47,7 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
+      <Toaster  theme="light" position='top'  />
     <RouterProvider router={router}/>
   </Provider>
 

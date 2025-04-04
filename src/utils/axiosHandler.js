@@ -2,19 +2,20 @@ import axios from "axios";
 
 
 
-export default async function axiosHandler(url,method,headers,credentials){
+export default async function axiosHandler(url,method,headers,credentials,data){
 
    try {
     const response = await axios({
         url:url,
         method:method,
         headers:headers,
-        withCredentials:credentials
+        withCredentials:credentials,
+        data:data
     })
 
     return await response;
    } catch (error) {
-    console.log(error)
+    throw new Error(error.response.data.message || "An error occurred");
    }
 
 }

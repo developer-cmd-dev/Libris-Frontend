@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axiosHandler from "./utils/axiosHandler";
 import { Link, Outlet } from "react-router";
 import Navbar from "./components/Navbar";
+import { Toaster } from "sonner";
 
 
 export default function App() {
@@ -35,6 +36,7 @@ export default function App() {
 
   return (
       <>
+          
           <Navbar/>
           <Outlet context={[response]}/>
       </>

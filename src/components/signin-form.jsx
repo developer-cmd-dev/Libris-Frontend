@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,37 +10,44 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link } from "react-router";
+import { toast } from "sonner";
 
-export function LoginForm({ className, ...props }) {
-  const [loginData, setLoginData] = useState({
+export function SigninForm({ className, ...props }) {
+
+  const [userData,setUserData]=useState({
     email: "",
+    name: "",
     password: "",
+    roles: ["user"],
   });
-
-  const handleOnchange = (e) => {
-    const { name, value } = e.target;
-    setLoginData({ ...loginData, [name]: value });
+  const handleOnChange = (e) => {
+   const {name,value}=e.target;
+   setUserData((prev) => ({ ...prev, [name]: value }));
   };
-
-
-  const handleSumbit =(e) => {
-    e.preventDefault();
-    props.handleLogin(loginData);
-    setLoginData({ email: "", password: "" });
+  const handleSubmit=(e) => {
+  e.preventDefault();
+    props.handleSubmit(userData) 
+    setUserData({
+      email: "",
+      name: "",
+      password: "",
+      roles: ["user"],
+    });
   }
+
+
   return (
     <div className={cn("flex flex-col gap-6 ", className)} {...props}>
       <Card>
         <CardHeader>
-          <CardTitle>Login to your account</CardTitle>
+          <CardTitle>Signin to your account</CardTitle>
           <CardDescription>
-            Enter your email below to login to your account
+            Enter your details below to Signin to your account
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSumbit}>
+          <form onSubmit={handleSubmit}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-3">
                 <Label htmlFor="email">Email</Label>
@@ -47,42 +55,47 @@ export function LoginForm({ className, ...props }) {
                   id="email"
                   type="email"
                   placeholder="m@example.com"
-                  onChange={handleOnchange}
+                  onChange={handleOnChange}
                   name="email"
+                  required
+                />
+              </div>
+              <div className="grid gap-3">
+                <Label htmlFor="name">Name</Label>
+                <Input
+                  id="name"
+                  type="text"
+                  placeholder="Enter your name"
+                  onChange={handleOnChange}
+                  name="name"
                   required
                 />
               </div>
               <div className="grid gap-3">
                 <div className="flex items-center">
                   <Label htmlFor="password">Password</Label>
-                  <a
-                    href="#"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                  >
-                    Forgot your password?
-                  </a>
                 </div>
                 <Input
                   id="password"
+                  name="password"
                   type="password"
                   required
-                  onChange={handleOnchange}
-                  name="password"
+                  onChange={handleOnChange}
                 />
               </div>
               <div className="flex flex-col gap-3">
                 <Button type="submit" className="w-full">
-                  Login
+                  Signin
                 </Button>
                 <Button variant="outline" className="w-full">
-                  Login with Google
+                  Signin with Google
                 </Button>
               </div>
             </div>
             <div className="mt-4 text-center text-sm">
-              Don&apos;t have an account?{" "}
-              <Link to="/signup" className="underline underline-offset-4">
-                Sign up
+              Already have an account?{" "}
+              <Link to="/login" className="underline underline-offset-4">
+                Login
               </Link>
             </div>
           </form>

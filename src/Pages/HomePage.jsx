@@ -4,14 +4,24 @@ import { Link } from 'react-router-dom';
 
 import { useOutletContext } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { handleBooksData } from '@/Features/BooksDataSlice';
+import { useDispatch } from 'react-redux';
 
 function HomePage() {
     const[resData,setResData]=useState([])
  const [response]=useOutletContext()
+ const dispatch = useDispatch()
 
  useEffect(() => {
     setResData(response)
  }, [response])
+
+
+ const handleSendBooksData = (value) => {
+     dispatch(handleBooksData(value))
+   }
+
+ 
  
 
 
@@ -21,6 +31,7 @@ function HomePage() {
           {resData.map((data) => (
             <Link
             to={`title/${data.title}`}
+            onClick={()=>handleSendBooksData(data)}
               key={data.id}
               className="aspect-square rounded-xl bg-none  flex flex-col  items-center justify-end    cursor-pointer"
             >

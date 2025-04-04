@@ -18,7 +18,6 @@ export default function App() {
       );
       setResponse(resp.data);
       setHeader(resp.headers);
-      console.log(resp.data);
     };
     getAxiosData();
   }, []);

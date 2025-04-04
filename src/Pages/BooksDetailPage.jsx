@@ -17,27 +17,35 @@ function BooksDetailPage() {
   }, [data]);
 
   return (
-    <div className="w-full h-[calc(100vh-5.5rem)]  flex items-center justify-center">
-      <div className=" w-[50%]  h-full flex items-center justify-center ">
-        <img src={data.formats["image/jpeg"]} alt="" className="w-[25vw]" />
+<div className="w-full h-[calc(100vh-5.5rem)] flex flex-col md:flex-row items-center justify-center overflow-hidden">
+      <div className="w-full md:w-[50%] h-[40%] md:h-full flex items-center justify-center p-4">
+        <img 
+          src={data.formats["image/jpeg"]} 
+          alt="" 
+          className="w-full max-w-md md:w-[25vw] object-contain max-h-[80%]" 
+        />
       </div>
 
-      <div className="details w-[50%] h-full flex flex-col items-center justify-around p-6 ">
-        <div className=" w-full h-24 flex flex-col items-center justify-around">
-          <h1 className="text-4xl w-full">{data.title} - {data.languages[0]}</h1>
-          <p className=" text-lg w-full">{data.authors[0].name}</p>
+      <div className="details w-full md:w-[50%] h-[60%] md:h-full flex flex-col items-center justify-between p-4 md:p-6">
+        <div className="w-full h-24 flex flex-col items-center justify-around text-center md:text-left">
+          <h1 className="text-2xl md:text-4xl w-full">{data.title} - {data.languages[0]}</h1>
+          <p className="text-base md:text-lg w-full">{data.authors[0].name}</p>
         </div>
-        <div className="w-full h-fit flex flex-col items-center justify-around ">
-          <h1 className="py-2 text-slate-400">
+        
+        <div className="w-full flex-1 overflow-y-auto py-4">
+          <p className="text-slate-400 text-sm md:text-base leading-relaxed">
             {data.summaries}
-          </h1>
+          </p>
         </div>
 
-        <div className="w-full h-24 flex  items-center justify-around  ">
-         <h1 className="text-4xl w-[50%]  text-center flex  items-center justify-center"><MdCurrencyRupee />
-         {data.price.toString().substring(0,3)} </h1>
-         <div className="w-[50%] h-full flex items-center justify-center">
-          <Button> <CiShoppingCart />Rent this book 
+        <div className="w-full h-24 flex flex-col sm:flex-row items-center justify-around gap-2 mt-4">
+         <h1 className="text-3xl md:text-4xl w-full sm:w-[50%] text-center flex items-center justify-center">
+           <MdCurrencyRupee />
+           {data.price.toString().substring(0,3)} 
+         </h1>
+         <div className="w-full sm:w-[50%] h-full flex items-center justify-center">
+          <Button className="w-full sm:w-auto"> 
+            <CiShoppingCart />Rent this book 
           </Button>
          </div>
         </div>  

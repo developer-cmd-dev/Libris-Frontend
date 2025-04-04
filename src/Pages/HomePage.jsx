@@ -6,6 +6,8 @@ import { useOutletContext } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { handleBooksData } from '@/Features/BooksDataSlice';
 import { useDispatch } from 'react-redux';
+import { CiShoppingCart } from "react-icons/ci";
+
 
 function HomePage() {
     const[resData,setResData]=useState([])
@@ -39,7 +41,7 @@ function HomePage() {
                     <img src={data.formats["image/jpeg"]} alt="" />
                 </div>
               <div className="w-full h-[20%] flex flex-col px-2 items-center justify-center ">
-                <Button className={"w-[70%] rounded-tl-xl rounded-tr-none rounded-bl-none rounded-br-xl  bg-blue-800 text-white text-lg hover:text-slate-800"}  >Rent Book</Button>
+                <Button variant={"default"} className={"w-[70%] rounded-tl-xl rounded-tr-none rounded-bl-none rounded-br-xl   "} >Rent Book</Button>
               </div>
             </Link>
           ))}

@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { CiShoppingCart } from "react-icons/ci";
+import { MdCurrencyRupee } from "react-icons/md";
+
 
 
 function BooksDetailPage() {
@@ -20,7 +22,7 @@ function BooksDetailPage() {
         <img src={data.formats["image/jpeg"]} alt="" className="w-[25vw]" />
       </div>
 
-      <div className="details w-[50%] h-full flex flex-col items-center justify-start p-6 ">
+      <div className="details w-[50%] h-full flex flex-col items-center justify-around p-6 ">
         <div className=" w-full h-24 flex flex-col items-center justify-around">
           <h1 className="text-4xl w-full">{data.title} - {data.languages[0]}</h1>
           <p className=" text-lg w-full">{data.authors[0].name}</p>
@@ -31,10 +33,11 @@ function BooksDetailPage() {
           </h1>
         </div>
 
-        <div className="w-full h-24 flex  items-center justify-around border ">
-         <h1 className="text-4xl w-[50%]"> {data.price.toString().substring(0,3)} </h1>
+        <div className="w-full h-24 flex  items-center justify-around  ">
+         <h1 className="text-4xl w-[50%]  text-center flex  items-center justify-center"><MdCurrencyRupee />
+         {data.price.toString().substring(0,3)} </h1>
          <div className="w-[50%] h-full flex items-center justify-center">
-          <Button>Rent this book <CiShoppingCart />
+          <Button> <CiShoppingCart />Rent this book 
           </Button>
          </div>
         </div>  

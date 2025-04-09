@@ -15,7 +15,6 @@ function BooksDetailPage() {
   useEffect(() => {
    const data = JSON.parse(localStorage.getItem("booksData"));
    const filteredData = data.filter((item) => item.title === title);
-   console.log(filteredData)
     setData(filteredData[0]);
   }, [title]);
 

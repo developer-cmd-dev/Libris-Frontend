@@ -11,6 +11,7 @@ import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
+import {toast} from 'sonner'
 
 export default function UserDropDownMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -21,6 +22,12 @@ export default function UserDropDownMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleLogout=()=>{
+    localStorage.removeItem("access_token")
+    toast.success("Logout Successfull");
+    window.location.reload()
+  }
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -95,9 +102,12 @@ export default function UserDropDownMenu() {
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={()=>{
+          handleLogout()
+          handleClose()
+        }}>
           <ListItemIcon>
-            <Logout fontSize="small" />
+            <Logout fontSize="small"  />
           </ListItemIcon>
           Logout
         </MenuItem>

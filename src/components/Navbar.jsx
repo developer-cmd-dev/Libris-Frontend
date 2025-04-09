@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import UserDropDownMenu from "./UserDropDownMenu";
 import { useSelector } from "react-redux";
+import { Link } from "react-router";
 
 
 function Navbar() {
@@ -33,9 +34,9 @@ function Navbar() {
             {isAuthenticated ? (
               <UserDropDownMenu />
             ) : (
-              <Button className={`rounded-full hover:bg-slate-700`}>
+              <Link to='/login' className={`rounded-full bg-white w-32 h-8 flex items-center justify-center text-black hover:bg-slate-700`}>
                 Login/Signup
-              </Button>
+              </Link>
             )}
 
             <Input

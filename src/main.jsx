@@ -12,6 +12,7 @@ import HomePage from "./Pages/HomePage";
 import { Toaster } from "sonner";
 import ProtectedRoute from "./Pages/ProtectedRoute";
 import RentBookPage from "./Pages/RentBookPage";
+import BackDropLoadingScreen from "./components/BackDropLoadingScreen";
 
 const router = createBrowserRouter([
   {
@@ -48,9 +49,12 @@ const router = createBrowserRouter([
   },
 ]);
 
+const {isLoading} = store.getState().loading;
+
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <Toaster theme="light" position="top" />
+    <BackDropLoadingScreen handleBackDrop={isLoading} />
     <RouterProvider router={router} />
   </Provider>
 );

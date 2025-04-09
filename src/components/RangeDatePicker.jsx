@@ -10,11 +10,12 @@ const darkTheme = createTheme({
   },
 });
 
-export default function RangeDatePicker() {
+export default function RangeDatePicker({handleDateTime}) {
+
   return (
     <ThemeProvider theme={darkTheme}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <StaticDatePicker orientation="landscape" className="rounded-xl" />
+        <StaticDatePicker orientation="landscape" className="rounded-xl w-2xl h-full"  onAccept={(e)=>handleDateTime(e)}/>
       </LocalizationProvider>
     </ThemeProvider>
   );

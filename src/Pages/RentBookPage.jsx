@@ -11,6 +11,7 @@ import RangeDatePicker from "@/components/RangeDatePicker";
 function RentBookPage() {
   const {id} = useParams()
   const [data, setData] = useState(null);
+  const [dateTime,setDateTime]=useState(null)
 
   useEffect(() => {
    const data = JSON.parse(localStorage.getItem("booksData"));
@@ -19,6 +20,12 @@ function RentBookPage() {
    console.log(filteredData)
     setData(filteredData[0]);
   }, [id]);
+
+
+  const handleDateTime = (e) => { 
+    setDateTime(e)
+  }
+
 
 
   
@@ -34,12 +41,16 @@ function RentBookPage() {
       </div>
 
       <div className="details w-full md:w-[50%] h-[60%] md:h-full flex flex-col items-center justify-between p-4 md:p-6">
-        <div className="w-full h-24 flex flex-col items-center justify-around text-center md:text-left">
+     {
+        dateTime!==null && (
+          <div className="w-full h-24 flex flex-col items-center justify-around text-center md:text-left">
           <h1 className="text-2xl md:text-4xl w-full">{data.title} - {data.languages[0]}</h1>
           <p className="text-base md:text-lg w-full">{data.authors[0].name}</p>
         </div>
+        )
+     }
         
-        <RangeDatePicker  />
+        {dateTime==null && (<RangeDatePicker handleDateTime={handleDateTime} />)}
 
         <div className="w-full h-24 flex flex-col sm:flex-row items-center justify-around gap-2 mt-4">
          <h1 className="text-3xl md:text-4xl w-full sm:w-[50%] text-center flex items-center justify-center">

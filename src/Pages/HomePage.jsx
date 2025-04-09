@@ -38,7 +38,7 @@ function HomePage() {
               className="aspect-square rounded-xl bg-none  flex flex-col  items-center justify-end    cursor-pointer"
             >
                 <div>
-                    <img src={data.formats["image/jpeg"]} alt="" />
+                  <img src={data.formats["image/jpeg"]} alt={`${data.title.concat("...")}`} />
                 </div>
               <div className="w-full h-[20%] flex flex-col px-2 items-center justify-center ">
                 <Button variant={"default"} className={"w-[70%] rounded-tl-xl rounded-tr-none rounded-bl-none rounded-br-xl   "} >Rent Book</Button>

@@ -28,7 +28,7 @@ function RentBookPage() {
       <div className="w-full md:w-[50%] h-[40%] md:h-full flex items-center justify-center p-4">
         <img 
           src={data.formats["image/jpeg"]} 
-          alt="" 
+          alt="image not found" 
           className="w-full max-w-md md:w-[25vw] object-contain max-h-[80%]" 
         />
       </div>
@@ -47,8 +47,8 @@ function RentBookPage() {
            {data.price.toString().substring(0,3)} 
          </h1>
          <div className="w-full sm:w-[50%] h-full flex items-center justify-center">
-          <Button className="w-full sm:w-auto"> 
-            <CiShoppingCart />Rent this book 
+          <Button className="w-full sm:w-auto bg-green-500 text-white hover:text-black"> 
+           Pay Now
           </Button>
          </div>
         </div>  

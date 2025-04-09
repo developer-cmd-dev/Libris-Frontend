@@ -4,11 +4,12 @@ import { Outlet } from 'react-router';
 import { toast } from 'sonner';
 import axiosHandler from './utils/axiosHandler';
 import Navbar from './components/Navbar';
+import { login } from './Features/AuthenticationSlice';
 function App() {
   const [response, setResponse] = useState([]);
   const [header, setHeader] = useState(null);
   const {isAuthenticated} = useSelector((state) => state.authentication)
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
 
 

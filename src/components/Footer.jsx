@@ -118,7 +118,7 @@ const Footer = () => {
                 <ul className="mt-6 space-y-4">
                     {
                         helpList.map((item,index)=>(
-                            <li>
+                            <li key={index}>
                             <Link to={item.path} title="" className="flex text-base text-gray-500 transition-all duration-200 hover:text-blue-600 focus:text-blue-600">{item.name}</Link>
                         </li>
                         ))

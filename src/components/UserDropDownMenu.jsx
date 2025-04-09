@@ -35,7 +35,7 @@ export default function UserDropDownMenu() {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Contact', path: '/contact' },
-    { name: 'Profile', path: `/profile/${userData.email}` }, 
+    { name: 'Profile', path: `/profile/${userData.email | null}` }, 
   ]
 
 

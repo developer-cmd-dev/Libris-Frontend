@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router';
 
 const ProfilePage = () => {
   // Sample user data - in a real app, this would come from an API or state
@@ -14,7 +15,6 @@ const ProfilePage = () => {
           <div className=" p-8 flex justify-center items-center  w-[50%] h-full  ">
             <span 
               className="rounded-full h-80 w-80 object-cover bg-black text-white flex items-center justify-center text-8xl "
-
             >{userData.name[0].toUpperCase()}</span>
           </div>
           
@@ -40,11 +40,11 @@ const ProfilePage = () => {
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2  gap-4 mt-6">
-                <div className="bg-[#dee2ff] p-4 rounded-lg text-[#14213d]">
+                <Link to={`/rented-books/${userData.email}`} className="bg-[#dee2ff] p-4 rounded-lg text-[#14213d]">
                   <h3 className=" font-bold text-lg">Rented Books</h3>
                   <p className="text-3xl font-bold text-">{userData.rentedBooks.length}</p>
                   <p className="text-sm ">Currently reading</p>
-                </div>
+                </Link>
                 
                 <div className="bg-green-50 p-4 rounded-lg">
                   <h3 className="text-green-800 font-bold text-lg">Purchased Books</h3>

@@ -14,6 +14,8 @@ import ProtectedRoute from "./Pages/ProtectedRoute";
 import RentBookPage from "./Pages/RentBookPage";
 import BookReader from "./components/BookReader";
 import ProfilePage from "./Pages/ProfilePage";
+import RentedBooksPage from "./Pages/RentedBooksPage";
+import ReturnBookPage from "./Pages/ReturnBookPage";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,15 @@ const router = createBrowserRouter([
       {
         element: <ProtectedRoute />,
         children: [
+          {
+              path:"/return-book/:id",
+              element:<ReturnBookPage/>
+          },
+
+          {
+            path:"/rented-books/:email",
+            element:<RentedBooksPage/>
+          },
           {
             path: "/profile/:email",
             element: <ProfilePage />,

@@ -26,7 +26,7 @@ export default function LoginPage() {
       if(resp.status === 200){
         toast.success("Login Successfull")
         localStorage.setItem("access_token",resp.data.access_token);
-        dispatch(login(true,resp.data))
+        dispatch(login(resp.data))
         navigate("/")
       }
       setLoading(false);

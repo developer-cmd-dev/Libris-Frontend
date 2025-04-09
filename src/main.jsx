@@ -12,6 +12,7 @@ import HomePage from "./Pages/HomePage";
 import { Toaster } from "sonner";
 import ProtectedRoute from "./Pages/ProtectedRoute";
 import RentBookPage from "./Pages/RentBookPage";
+import BookReader from "./components/BookReader";
 
 const router = createBrowserRouter([
   {
@@ -23,17 +24,24 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
+        path:"read/:id",
+        element:<BookReader />
+      },
+      {
         element: <ProtectedRoute />,
         children: [
+        
           {
             path: "/rent-book/:id",
             element: <RentBookPage />,
 
           },
+          
           {
             path: "/title/:title",
             element: <BooksDetailPage />,
           },
+        
         ]
       },
     ],

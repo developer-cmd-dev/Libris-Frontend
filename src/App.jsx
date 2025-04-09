@@ -60,7 +60,8 @@ function App() {
           );
           if (authenticated.status == 200) {
             toast.success("Login Successfully");
-            dispatch(login(true, authenticated.data));
+            console.log(authenticated.data);
+            dispatch(login( authenticated.data));
           }
         }
       } catch (error) {

@@ -11,7 +11,7 @@ export function LoginForm({ className, ...props }) {
   });
 
   const handleChange = (e) => {
-    const [name, value] = e.target;
+    const { name, value } = e.target;
     setUserData((prevState) => ({
       ...prevState,
       [name]: value,
@@ -20,7 +20,7 @@ export function LoginForm({ className, ...props }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.handlelogin(userData);
+    props.handleLogin(userData);
     setUserData({
       email: "",
       password: "",
@@ -43,7 +43,7 @@ export function LoginForm({ className, ...props }) {
         <div className="grid gap-3">
           <Label htmlFor="email">Email</Label>
           <Input
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
             name="email"
             id="email"
             type="email"
@@ -62,7 +62,7 @@ export function LoginForm({ className, ...props }) {
             </a>
           </div>
           <Input
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
             name="password"
             id="password"
             type="password"

@@ -22,7 +22,6 @@ export default function LoginPage() {
     try{
       dispatch(setLoading(true));
       const resp = await axiosHandler("http://localhost:8080/public/login","post",null,true,data);
-      console.log(resp)
       if(resp.status === 200){
         toast.success("Login Successfull")
         localStorage.setItem("access_token",resp.data.access_token);
@@ -31,9 +30,9 @@ export default function LoginPage() {
       }
     } catch (error) {
       toast.error(error.message);
-      dispatch(setLoading(false));
+      dispatch(setLoading(true));
     }finally{
-     dispatch(setLoading(false));
+     dispatch(setLoading(true));
     }
   }
 
@@ -59,7 +58,7 @@ export default function LoginPage() {
       <div className="flex flex-col gap-4 p-6 md:p-10">
    <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-xs">
-            <LoginForm handlelogin={handleLogin} />
+            <LoginForm handleLogin={handleLogin} />
           </div>
         </div>
       </div>

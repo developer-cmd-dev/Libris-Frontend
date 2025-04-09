@@ -11,8 +11,9 @@ export default function SignUpPage() {
   const navigate= useNavigate();
 
   const handleSubmit = async (values) => {
+    console.log(values);
       try{
-        const resp = await axiosHandler("http://localhost:8080/public/signup","post",null,false,values);
+        const resp = await axiosHandler("http://localhost:8080/public/signup","post",false,null,values);
         if(resp.status === 200){
           toast.success("Signin Successfull")
           navigate("/login")

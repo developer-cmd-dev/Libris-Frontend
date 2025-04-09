@@ -16,12 +16,12 @@ import { toast } from "sonner";
 export function SigninForm({ className, ...props }) {
 
   const [userData,setUserData]=useState({
-    email: "",
-    name: "",
-    password: "",
+    email: null,
+    name: null,
+    password: null,
     roles: ["user"],
   });
-  const handleOnChange = (e) => {
+  const handleOnChange = (e) => {``
    const {name,value}=e.target;
    setUserData((prev) => ({ ...prev, [name]: value }));
   };
@@ -29,9 +29,9 @@ export function SigninForm({ className, ...props }) {
   e.preventDefault();
     props.handleSubmit(userData) 
     setUserData({
-      email: "",
-      name: "",
-      password: "",
+      email: null,
+      name: null,
+      password: null,
       roles: ["user"],
     });
   }

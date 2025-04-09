@@ -16,18 +16,18 @@ function BooksDetailPage() {
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("booksData"));
     const filteredData = data.filter((item) => item.title === title);
-    userData.rentedBooks.forEach((item)=>{
-     
+   userData.rentedBooks.length>0&& userData.rentedBooks.forEach((item)=>{
       if(item.bookId == filteredData[0].id){
+        console.log("rented")
        setIsRented(true)
       }else{
         console.log("not rented")
       }
     })
 
-
+  console.log(userData);
     setData(filteredData[0]);
-  }, [title]);
+  }, [title,userData]);
 
   return (
     data !== null && (

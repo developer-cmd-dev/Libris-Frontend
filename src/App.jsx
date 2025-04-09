@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import { login } from "./Features/AuthenticationSlice";
 import BackDropLoadingScreen from "./components/BackDropLoadingScreen";
 import { setLoading } from "./Features/LoadingSlice";
+import Footer from "./components/Footer";
 function App() {
   const [response, setResponse] = useState([]);
   const [header, setHeader] = useState(null);
@@ -60,7 +61,6 @@ function App() {
           );
           if (authenticated.status == 200) {
             toast.success("Login Successfully");
-            console.log(authenticated.data);
             dispatch(login( authenticated.data));
           }
         }
@@ -77,6 +77,7 @@ function App() {
       <BackDropLoadingScreen handleBackDrop={isLoading} />
       <Navbar />
       <Outlet context={[response]} />
+      <Footer/>
     </>
   );
 }

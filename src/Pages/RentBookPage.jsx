@@ -10,6 +10,7 @@ import axiosHandler from "@/utils/axiosHandler";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "@/Features/LoadingSlice";
 import { toast } from "sonner";
+import { login } from "@/Features/AuthenticationSlice";
 
 function RentBookPage() {
   const {id} = useParams()
@@ -18,6 +19,7 @@ function RentBookPage() {
   const [clientView,setClientView]=useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const {userData}=useSelector((state)=>state.authentication);
 
   useEffect(() => {
    const data = JSON.parse(localStorage.getItem("booksData"));
@@ -27,7 +29,6 @@ function RentBookPage() {
 
 
   const handleDateTime = (setValue,clientView) => { 
-    console.log(setValue);
     setDateTime(({...setValue,rentalCost:data.price}))
     setClientView(clientView);
   }
@@ -42,6 +43,9 @@ function RentBookPage() {
         }
         const response = await axiosHandler(`http://localhost:8080/home/rent-book/${id}`,"post",null,header,dateTime);
         if(response.status===200){
+          const upadtedUserData ={...userData,rentedBooks:[...response.data]}
+          
+          dispatch(login(upadtedUserData))
           toast.success("Book rented successfully")
           setDateTime(null);
           dispatch(setLoading(false));
@@ -49,7 +53,6 @@ function RentBookPage() {
         }
       } catch (error) {
         toast.error("Error renting book");
-        console.log(error);
         dispatch(setLoading(false));
       }
     }

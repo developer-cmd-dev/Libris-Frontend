@@ -17,7 +17,7 @@ function Navbar() {
   const { isAuthenticated } = useSelector((state) => state.authentication);
 
   return (
-    <header className="sticky top-0 flex h-22 shrink-0 items-center gap-2   px-4 bg-slate-900">
+    <header className="sticky top-0 flex h-22 shrink-0 items-center gap-2   px-4 bg-[#22223b]">
       <Breadcrumb className={" w-full flex items-center justify-around"}>
         <BreadcrumbList className={"w-full "}>
           <BreadcrumbItem className={"w-32 rounded-3xl  "}>

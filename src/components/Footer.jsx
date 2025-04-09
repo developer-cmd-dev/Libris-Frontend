@@ -1,8 +1,51 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router';
 
-const Footer = () => {        
+const Footer = () => {     
+    
+    const companyList = [
+        {
+            path:'/about',
+            name:'About'
+        },
+        {
+            path:'features',
+            name:'Features'
+        },
+
+        {
+            path:'works',
+            name:'Works'
+        },{
+            path:'career',
+            name:'Career'
+        }
+        
+    ]
+
+
+    const helpList=[
+        {
+            path:'customer-support',
+            name:'Customer Support'
+        },{
+            path:'delivery-details',
+            name:'Delivery Details'
+        },{
+            path:'terms-conditions',
+            name:'Terms & Conditions'
+        },{
+            path:'privacy-policy',
+            name:'Privacy Policy'
+        }
+
+
+
+    ]
+    
+
     return (
-        <section className="py-10 bg-gray-50 sm:pt-16 lg:pt-24">
+        <section className="py-10 bg-[#22223b] sm:pt-16 lg:pt-24">
     <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-16 gap-x-12">
             <div className="col-span-2 md:col-span-3 lg:col-span-2 lg:pr-8">
@@ -59,21 +102,13 @@ const Footer = () => {
                 <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">Company</p>
 
                 <ul className="mt-6 space-y-4">
-                    <li>
-                        <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> About </a>
-                    </li>
-
-                    <li>
-                        <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Features </a>
-                    </li>
-
-                    <li>
-                        <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Works </a>
-                    </li>
-
-                    <li>
-                        <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Career </a>
-                    </li>
+                    {
+                        companyList.map((item, index) => (
+                            <li key={index}>
+                            <Link to={item.path} title="" className="flex text-base text-gray-500 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> {item.name} </Link>
+                        </li>
+                        ))
+                    }
                 </ul>
             </div>
 
@@ -81,21 +116,13 @@ const Footer = () => {
                 <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">Help</p>
 
                 <ul className="mt-6 space-y-4">
-                    <li>
-                        <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Customer Support </a>
-                    </li>
-
-                    <li>
-                        <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Delivery Details </a>
-                    </li>
-
-                    <li>
-                        <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Terms & Conditions </a>
-                    </li>
-
-                    <li>
-                        <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Privacy Policy </a>
-                    </li>
+                    {
+                        helpList.map((item,index)=>(
+                            <li>
+                            <Link to={item.path} title="" className="flex text-base text-gray-500 transition-all duration-200 hover:text-blue-600 focus:text-blue-600">{item.name}</Link>
+                        </li>
+                        ))
+                    }
                 </ul>
             </div>
 

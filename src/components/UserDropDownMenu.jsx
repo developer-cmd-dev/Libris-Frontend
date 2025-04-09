@@ -12,9 +12,12 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import {toast} from 'sonner'
+import { Link, NavLink } from 'react-router';
+import { useSelector } from 'react-redux';
 
 export default function UserDropDownMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const {userData}=useSelector((state)=>state.authentication);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -28,11 +31,24 @@ export default function UserDropDownMenu() {
     toast.success("Logout Successfull");
     window.location.reload()
   }
+
+  const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'Contact', path: '/contact' },
+    { name: 'Profile', path: `/profile/${userData.email}` }, 
+  ]
+
+
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-        <Typography sx={{ minWidth: 100 }}>Contact</Typography>
-        <Typography sx={{ minWidth: 100 }}>Profile</Typography>
+       {
+        navLinks.map((link) => (
+          <NavLink to={link.path} key={link.name} className={({ isActive }) => isActive ? 'bg-white text-black    rounded-xl px-4 py-2 mr-2' : 'text-white  px-4 py-2 mr-2'}>
+            {link.name}
+          </NavLink>
+        ))
+       }
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
@@ -42,7 +58,7 @@ export default function UserDropDownMenu() {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+            <Avatar sx={{ width: 52, height: 52,backgroundColor:'black' }}>{userData.name[0].toUpperCase()}</Avatar>
           </IconButton>
         </Tooltip>
       </Box>

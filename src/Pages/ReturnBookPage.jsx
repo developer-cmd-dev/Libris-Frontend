@@ -32,6 +32,7 @@ function ReturnBookPage() {
           Authorization: token ? `Bearer ${token}` : null,
         }
         const response = await axiosHandler(`${import.meta.env.VITE_BACKEND_URL}/home/return-book/${id}`, "post",false,header,null); 
+        console.log(response.data)
         console.log(response.data);
         
     } catch (error) {

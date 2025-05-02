@@ -21,7 +21,7 @@ export default function LoginPage() {
   const handleLogin=async (data) => {    
     try{
       setLoading(true)
-      const resp = await axiosHandler("http://localhost:8080/public/login","post",null,true,data);
+      const resp = await axiosHandler(`${import.meta.env.VITE_BACKEND_URL}/public/login`,"post",null,true,data);
 
       if(resp.status === 200){
         toast.success("Login Successfull")

@@ -22,7 +22,7 @@ function App() {
         const data = JSON.parse(localStorage.getItem("booksData"));
         if (data == null || data.length == 0) {
           const resp = await axiosHandler(
-            "http://localhost:8080/home",
+            `${import.meta.env.VITE_BACKEND_URL}/home`,
             "get",
             null,
             null,

@@ -13,7 +13,7 @@ export default function SignUpPage() {
   const handleSubmit = async (values) => {
     console.log(values);
       try{
-        const resp = await axiosHandler("http://localhost:8080/public/signup","post",false,null,values);
+        const resp = await axiosHandler(`${import.meta.env.VITE_BACKEND_URL}/public/signup`,"post",false,null,values);
         if(resp.status === 200){
           toast.success("Signin Successfull")
           navigate("/login")

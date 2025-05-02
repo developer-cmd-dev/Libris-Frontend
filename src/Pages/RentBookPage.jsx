@@ -41,7 +41,7 @@ function RentBookPage() {
         const header = {  
           Authorization: token ? `Bearer ${token}` : null,
         }
-        const response = await axiosHandler(`http://localhost:8080/home/rent-book/${id}`,"post",null,header,dateTime);
+        const response = await axiosHandler(`${import.meta.env.VITE_BACKEND_URL}/home/rent-book/${id}`,"post",null,header,dateTime);
         if(response.status===200){
           const upadtedUserData ={...userData,rentedBooks:[...response.data]}
           
@@ -52,7 +52,8 @@ function RentBookPage() {
           navigate(-1)
         }
       } catch (error) {
-        toast.error("Error renting book");
+        
+        toast.error(error.message);
         dispatch(setLoading(false));
       }
     }

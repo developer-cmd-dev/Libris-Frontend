@@ -53,7 +53,7 @@ function App() {
             Authorization: token ? `Bearer ${token}` : null,
           };
           const authenticated = await axiosHandler(
-            "http://localhost:8080/public/verify-token",
+            `${import.meta.env.VITE_BACKEND_URL}/public/verify-token`,
             "get",
             null,
             header,

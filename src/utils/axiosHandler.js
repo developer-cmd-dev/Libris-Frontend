@@ -13,8 +13,9 @@ export default async function axiosHandler(url,method,credentials,headers,data){
         data:data
     })
 
-    return await response;
+    return  response;
    } catch (error) {
+    console.log(error)
     throw new Error(error.response.data.message || "An error occurred");
    }
 

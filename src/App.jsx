@@ -23,9 +23,9 @@ function App() {
         if (data == null || data.length == 0) {
           const resp = await axiosHandler(
             `${import.meta.env.VITE_BACKEND_URL}/home`,
-            "get",
+            "GET",
             null,
-            null,
+            true,
             null
           );
           localStorage.setItem("booksData", JSON.stringify(resp.data));

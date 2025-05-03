@@ -7,12 +7,18 @@ import { MdCurrencyRupee } from "react-icons/md";
 import { Link, useParams } from "react-router";
 import { useSelector } from "react-redux";
 import axiosHandler from "@/utils/axiosHandler";
+import { toast } from "sonner";
+import { useDispatch } from "react-redux";
+import { setLoading } from "@/Features/LoadingSlice";
+import { login } from "@/Features/AuthenticationSlice";
+
 
 function ReturnBookPage() {
   const { id } = useParams();
   const [data, setData] = useState(null);
   const [isRented, setIsRented] = useState(false);
   const {userData}=useSelector((state)=>state.authentication);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("booksData"));
@@ -28,15 +34,25 @@ function ReturnBookPage() {
   const handleReturnBook=async()=>{
     try {
         const token = localStorage.getItem("access_token");
+        dispatch(setLoading(true))
+
         const header = {  
           Authorization: token ? `Bearer ${token}` : null,
         }
         const response = await axiosHandler(`${import.meta.env.VITE_BACKEND_URL}/home/return-book/${id}`, "post",false,header,null); 
-        console.log(response.data)
-        console.log(response.data);
+        if(response.status==200){
+          console.log(response.data)
+          dispatch(login(response.data[0]));
+          dispatch(setLoading(false))
+          toast.success("Book Returned Successfully")
+        };
+          
         
     } catch (error) {
-        console.log(error.message)
+      dispatch(setLoading(false))
+     toast.error(error.message)
+    }finally{
+      dispatch(setLoading(false))
     }
   }
 

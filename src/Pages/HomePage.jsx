@@ -18,7 +18,7 @@ function HomePage() {
 
   useEffect(() => {
     
-    // setResData(response)
+    setResData(response)
   }, [response])
 
 
@@ -31,9 +31,9 @@ function HomePage() {
 
 
   return (
-    <div className="flex flex-1 flex-col gap-4 p-4 borders border-red-300 ">
+    <div className="flex flex-1 flex-col min-h-screen gap-4 p-4 borders border-red-300 ">
       <div className="grid auto-rows-min gap-4 md:grid-cols-5">
-        {isLoading ? resData.map((data) => (
+        {resData.length>0? resData.map((data) => (
           <Link
             to={`title/${data.title}`}
             onClick={() => handleSendBooksData(data)}
@@ -52,7 +52,7 @@ function HomePage() {
           to={`title/${data.title}`}
           onClick={() => handleSendBooksData(data)}
           key={index}
-          className="aspect-square rounded-xl bg-none  flex flex-col  items-center justify-end    cursor-pointer"
+          className="aspect-square border rounded-xl bg-none  flex flex-col  items-center justify-end    cursor-pointer"
         >
        <div className="flex flex-col space-y-3">
       <Skeleton className="h-[125px] w-[250px] rounded-xl" />
